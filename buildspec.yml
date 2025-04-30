@@ -6,6 +6,7 @@ phases:
       python: 3.11
     commands:
       - echo Installing system dependencies...
+      - chmod +x scripts/fetch_secrets.sh
       - ./scripts/fetch_secrets.sh
 
   build:
