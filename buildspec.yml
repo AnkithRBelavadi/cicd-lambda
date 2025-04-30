@@ -25,4 +25,5 @@ post_build:
     - echo Updating Lambda function...
     - aws lambda update-function-code \
         --function-name test-cicd-lambda \
-        --zip-file fileb://function.zip
+        --zip-file fileb://function.zip \
+        --region ap-south-2
