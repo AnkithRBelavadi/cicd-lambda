@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+      - echo Installing system dependencies...
+      - ./scripts/fetch_secrets.sh
+
+  build:
+    commands:
+      - echo Zipping Lambda code...
+      - zip -r function.zip lambda_function.py utilities.py .env
+
+artifacts:
+  files:
+    - function.zip
+  discard-paths: yes
+
+post_build:
+  commands:
+    - echo Updating Lambda function...
+    - aws lambda update-function-code \
+        --function-name test-cicd-lambda \
+        --zip-file fileb://function.zip
