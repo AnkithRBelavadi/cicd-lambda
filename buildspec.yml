@@ -13,6 +13,7 @@ phases:
     commands:
       - echo Zipping Lambda code...
       - zip -r function.zip lambda_function.py utilities.py .env
+      - unzip -l function.zip
 
 artifacts:
   files:
