@@ -1,5 +1,7 @@
 #!/bin/bash
 echo "Fetching secrets from AWS SSM..."
+PARAM_VAR_A="/PARAM_VAR_A"
+PARAM_VAR_B="/PARAM_VAR_B"
 
 VAR_A=$(aws ssm get-parameter --name "$PARAM_VAR_A" --with-decryption --query "Parameter.Value" --output text)
 VAR_B=$(aws ssm get-parameter --name "$PARAM_VAR_B" --with-decryption --query "Parameter.Value" --output text)
